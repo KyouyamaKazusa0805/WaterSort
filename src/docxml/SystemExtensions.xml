@@ -1,0 +1,373 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SystemExtensions</name>
+    </assembly>
+    <members>
+        <member name="T:System.Collections.Generic.ListExtensions">
+            <summary>
+            Provides extension methods on <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <seealso cref="T:System.Collections.Generic.List`1"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.AddRef``1(System.Collections.Generic.List{``0},``0@)">
+            <summary>
+            Adds an object to the end of the <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <typeparam name="T">The type of elements in the list.</typeparam>
+            <param name="this">The current instance.</param>
+            <param name="item">The object to be added to the end of the <see cref="T:System.Collections.Generic.List`1"/>.</param>
+            <remarks>
+            This method passes with a reference to an object, which is unnecessary to be called by a reference-typed object,
+            or a value-typed object whose memory size is less than a pointer. <b>Always measure the necessity of the usage.</b>
+            </remarks>
+            <seealso cref="T:System.Runtime.CompilerServices.UnsafeAccessorAttribute"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.AddRangeRef``1(System.Collections.Generic.List{``0},System.ReadOnlySpan{``0})">
+            <summary>
+            Adds the elements of the specified <see cref="T:System.ReadOnlySpan`1"/> to the end of the <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <typeparam name="T">The type of elements in the list.</typeparam>
+            <param name="this">The current instance.</param>
+            <param name="items">The collection whose elements should be added to the end of the <see cref="T:System.Collections.Generic.List`1"/>.</param>
+            <remarks>
+            This method passes with a <see cref="T:System.ReadOnlySpan`1"/> instead of <see cref="T:System.Collections.Generic.IEnumerable`1"/>,
+            allowing iterating on read-only references of collection elements, which is unnecessary to be called
+            by a reference-typed object, or a value-typed object whose memory size is less than a pointer.
+            <b>Always measure the necessity of the usage.</b>
+            </remarks>
+            <seealso cref="T:System.Runtime.CompilerServices.UnsafeAccessorAttribute"/>
+            <seealso cref="T:System.ReadOnlySpan`1"/>
+            <seealso cref="T:System.Collections.Generic.IEnumerable`1"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.RemoveAt``1(System.Collections.Generic.List{``0},System.Index)">
+            <inheritdoc cref="M:System.Collections.Generic.List`1.RemoveAt(System.Int32)"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.SequenceEqual``1(System.Collections.Generic.List{``0},System.Collections.Generic.List{``0})">
+            <summary>
+            Determines whether two sequences are equal by comparing the elements by using <see cref="M:System.IEquatable`1.Equals(`0)"/> for their type.
+            </summary>
+            <typeparam name="TEquatable">The type of each element.</typeparam>
+            <param name="this">A <see cref="T:System.Collections.Generic.List`1"/> to compare to <paramref name="other"/>.</param>
+            <param name="other">A <see cref="T:System.Collections.Generic.List`1"/> to compare to <paramref name="this"/>.</param>
+            <returns>
+            <see langword="true"/> if the two source sequences are of equal length and their corresponding elements are equal according
+            to <see cref="M:System.IEquatable`1.Equals(`0)"/> for their type; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.Sum``1(System.Collections.Generic.List{``0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Sum(System.Collections.Generic.IEnumerable{System.Int32})"/>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.AsSpan``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Gets a <see cref="T:System.ReadOnlySpan`1"/> view over the data in a list.
+            Items should not be added or removed from the <see cref="T:System.Collections.Generic.List`1"/> while the <see cref="T:System.ReadOnlySpan`1"/> is in use.
+            </summary>
+            <param name="this">The instance to be transformed.</param>
+            <returns>A <see cref="T:System.ReadOnlySpan`1"/> instance over the <see cref="T:System.Collections.Generic.List`1"/>.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.AsMemory``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Try to create a <see cref="T:System.ReadOnlyMemory`1"/> with values from the current <see cref="T:System.Collections.Generic.List`1"/> object,
+            without any copy operation.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The list to create.</param>
+            <returns>The created <see cref="T:System.ReadOnlyMemory`1"/> instance.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.AddWithResize``1(System.Collections.Generic.List{``0},``0@)">
+            <summary>
+            Add an item and resize the <see cref="T:System.Collections.Generic.List`1"/> of <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type of the target value to be added.</typeparam>
+            <param name="this">The list.</param>
+            <param name="item">An instance of type <typeparamref name="T"/> to be added.</param>
+        </member>
+        <member name="M:System.Collections.Generic.ListExtensions.GetNewCapacity``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            Try to get a new capacity value by the desired capacity to be set.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The collection.</param>
+            <param name="capacity">The desired capacity to be set.</param>
+            <returns>The result value to be set.</returns>
+        </member>
+        <member name="T:System.Collections.Generic.Entry`1">
+            <summary>
+            Represents an entry to call internal fields on <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <typeparam name="T">The type of each element in <see cref="T:System.Collections.Generic.List`1"/>.</typeparam>
+            <seealso cref="T:System.Collections.Generic.List`1"/>
+        </member>
+        <member name="M:System.Collections.Generic.Entry`1.GetSize(System.Collections.Generic.List{`0})">
+            <summary>
+            Try to fetch the internal field <c>_size</c> in type <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <param name="this">The list.</param>
+            <returns>The reference to the internal field.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.Entry`1.GetVersion(System.Collections.Generic.List{`0})">
+            <summary>
+            Try to fetch the internal field <c>_version</c> in type <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <param name="this">The list.</param>
+            <returns>The reference to the internal field.</returns>
+        </member>
+        <member name="M:System.Collections.Generic.Entry`1.GetItems(System.Collections.Generic.List{`0})">
+            <summary>
+            Try to fetch the internal reference to the first <typeparamref name="T"/> in a <see cref="T:System.Collections.Generic.List`1"/>.
+            </summary>
+            <param name="this">The list of <typeparamref name="T"/> instances.</param>
+            <returns>The reference to the first <typeparamref name="T"/>.</returns>
+        </member>
+        <member name="T:System.Linq.SpanEnumerable">
+            <summary>
+            Provides LINQ-based extension methods on <see cref="T:System.ReadOnlySpan`1"/>.
+            </summary>
+            <seealso cref="T:System.ReadOnlySpan`1"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Index``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Returns a new <see cref="T:System.ReadOnlySpan`1"/> instance that contains each element with its corresponding index.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The object to be iterated.</param>
+            <returns>A new <see cref="T:System.ReadOnlySpan`1"/> instance.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.FirstIndex``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Finds the first element satisfying the specified condition, and return its corresponding index.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The sequence.</param>
+            <param name="predicate">The condition.</param>
+            <returns>
+            An <see cref="T:System.Int32"/> indicating the found element. -1 returns if the sequence has no element satisfying the condition.
+            </returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.LastIndex``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Finds the last element satisfying the specified condition, and return its corresponding index.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The sequence.</param>
+            <param name="predicate">The condition.</param>
+            <returns>
+            An <see cref="T:System.Int32"/> indicating the found element. -1 returns if the sequence has no element satisfying the condition.
+            </returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Min``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Try to get the minimal value appeared in the collection.
+            </summary>
+            <typeparam name="TNumber">The type of each element.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <returns>The minimal value.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Min``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.MinBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.MinBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
+            <summary>
+            Returns the minimum value in a generic sequence according to a specified key selector function.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TKey">The type of key to compare elements by.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="keySelector">A function to extract the key for each element.</param>
+            <returns>The value with the minimum key in the sequence.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Max``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Try to get the minimal value appeared in the collection.
+            </summary>
+            <typeparam name="TNumber">The type of each element.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <returns>The minimal value.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Max``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.MaxBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.MaxBy``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
+            <summary>
+            Returns the maximum value in a generic sequence according to a specified key selector function.
+            </summary>
+            <typeparam name="TSource">The type of the elements of source.</typeparam>
+            <typeparam name="TKey">The type of key to compare elements by.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="keySelector">A function to extract the key for each element.</param>
+            <returns>The value with the maximum key in the sequence.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Sum``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Totals up all elements, and return the result of the sum by the specified property calculated from each element.
+            </summary>
+            <typeparam name="T">The type of the elements of source.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <returns>The value with the sum key in the sequence.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Any``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.Any``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.All``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Checks whether all elements are satisfied the specified condition.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="match">The <see cref="T:System.Func`2"/> that defines the conditions of the elements to search for.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.AllAre``2(System.ReadOnlySpan{``0})">
+            <summary>
+            Determines whether all elements are of type <typeparamref name="TDerived"/>.
+            </summary>
+            <typeparam name="TBase">The type of each element.</typeparam>
+            <typeparam name="TDerived">The derived type to be checked.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <returns>A <see cref="T:System.Boolean"/> result indicating that.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.OfType``2(System.ReadOnlySpan{``0})">
+            <summary>
+            Filters instances of type <typeparamref name="TBase"/>, only reserving elements of type <typeparamref name="TDerived"/>.
+            </summary>
+            <typeparam name="TBase">The type of base elements.</typeparam>
+            <typeparam name="TDerived">The type derived from <typeparamref name="TBase"/> to be checked.</typeparam>
+            <param name="this">The source elements.</param>
+            <returns>A new <see cref="T:System.ReadOnlySpan`1"/> instance of elements of type <typeparamref name="TDerived"/>.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Cast``2(System.ReadOnlySpan{``0})">
+            <summary>
+            Casts each element from type <typeparamref name="TBase"/> to <typeparamref name="TDerived"/>, without element type checking;
+            throws if casting operation is invalid.
+            </summary>
+            <typeparam name="TBase">The type of each element.</typeparam>
+            <typeparam name="TDerived">The type of target elements.</typeparam>
+            <param name="this">The source elements.</param>
+            <returns>A new <see cref="T:System.ReadOnlySpan`1"/> instance of elements of type <typeparamref name="TDerived"/>.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Skip``1(System.ReadOnlySpan{``0},System.Int32)">
+            <summary>
+            Skips the specified number of elements, make a new <see cref="T:System.ReadOnlySpan`1"/> instance points to it.
+            </summary>
+            <typeparam name="T">The type of each element.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="count">The number of elements to skip.</param>
+            <returns>
+            The new instance that points to the first element that has already skipped the specified number of elements.
+            </returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.FindAll``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Retrieves all the elements that match the conditions defined by the specified predicate.
+            </summary>
+            <typeparam name="T">The type of the elements of the span.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="match">The <see cref="T:System.Func`2"/> that defines the conditions of the elements to search for.</param>
+            <returns>
+            A <see cref="T:System.ReadOnlySpan`1"/> containing all the elements that match the conditions defined
+            by the specified predicate, if found; otherwise, an empty <see cref="T:System.ReadOnlySpan`1"/>.
+            </returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,``1})">
+            <summary>
+            Projects each element in the current instance into the target-typed span of element type <typeparamref name="TResult"/>,
+            using the specified function to convert.
+            </summary>
+            <typeparam name="T">The type of each elements in the span.</typeparam>
+            <typeparam name="TResult">The type of target value.</typeparam>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="selector">The selector.</param>
+            <returns>An array of <typeparamref name="TResult"/> elements.</returns>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,System.Int32,``1})">
+            <inheritdoc cref="M:System.Linq.SpanEnumerable.Select``2(System.ReadOnlySpan{``0},System.Func{``0,``1})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Where``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Where``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.First``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.Enumerable.First``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.FirstOrDefault``1(System.ReadOnlySpan{``0},System.Func{``0,System.Boolean})">
+            <inheritdoc cref="M:System.Linq.Enumerable.FirstOrDefault``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Take``1(System.ReadOnlySpan{``0},System.Int32)">
+            <inheritdoc cref="M:System.Linq.Enumerable.Take``1(System.Collections.Generic.IEnumerable{``0},System.Int32)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Take``1(System.ReadOnlySpan{``0},System.Range)">
+            <inheritdoc cref="M:System.Linq.Enumerable.Take``1(System.Collections.Generic.IEnumerable{``0},System.Range)"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Aggregate``1(System.ReadOnlySpan{``0},System.Func{``0,``0,``0})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Aggregate``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,``0,``0})"/>
+        </member>
+        <member name="M:System.Linq.SpanEnumerable.Aggregate``2(System.ReadOnlySpan{``0},``1,System.Func{``1,``0,``1})">
+            <inheritdoc cref="M:System.Linq.Enumerable.Aggregate``2(System.Collections.Generic.IEnumerable{``0},``1,System.Func{``1,``0,``1})"/>
+        </member>
+        <member name="T:System.MemoryExtensions2">
+            <summary>
+            Extends from type <see cref="T:System.MemoryExtensions"/>.
+            </summary>
+            <seealso cref="T:System.MemoryExtensions"/>
+        </member>
+        <member name="M:System.MemoryExtensions2.AsReadOnlySpan``1(``0[])">
+            <inheritdoc cref="M:System.MemoryExtensions.AsSpan``1(``0[])"/>
+        </member>
+        <member name="T:System.Numerics.Combinatorial">
+            <summary>
+            Extracts the type that includes the methods that operates with combinatorial values.
+            </summary>
+        </member>
+        <member name="F:System.Numerics.Combinatorial.PascalTriangle">
+            <summary>
+            Indicates the <see href="https://en.wikipedia.org/wiki/Pascal%27s_triangle">Pascal's Triangle</see>
+            (in Chinese: Yang Hui's Triangle), i.e. the combinatorial numbers from <c>C(1, 1)</c> to <c>C(30, 30)</c>.
+            </summary>
+        </member>
+        <member name="M:System.Numerics.Combinatorial.GetSubsets``1(System.ReadOnlySpan{``0},System.Int32)">
+            <summary>
+            Get all subsets from the specified number of the values to take.
+            </summary>
+            <param name="this">The collection to be used and checked.</param>
+            <param name="count">The number of elements you want to take.</param>
+            <returns>
+            The subsets of the list.
+            For example, if the input array is <c>[1, 2, 3]</c> and the argument <paramref name="count"/> is 2, the result will be
+            <code><![CDATA[
+            [[1, 2], [1, 3], [2, 3]]
+            ]]></code>
+            3 cases.
+            </returns>
+        </member>
+        <member name="M:System.Numerics.Combinatorial.GetSubsets``1(System.ReadOnlySpan{``0})">
+            <summary>
+            Get all subsets from the collection.
+            </summary>
+            <param name="this">The collection to be used and checked.</param>
+            <returns>
+            All possible combinations returned.
+            </returns>
+        </member>
+        <member name="M:System.Numerics.Combinatorial.GetExtractedCombinations``1(``0[][])">
+            <summary>
+            Get all combinations that each sub-array only choose one.
+            </summary>
+            <param name="this">The jigsaw array.</param>
+            <returns>
+            All combinations that each sub-array choose one.
+            For example, if one array is <c>[[1, 2, 3], [1, 3], [1, 4, 7, 10]]</c>, the final combinations will be
+            <code><![CDATA[
+            [
+                [1, 1, 1], [1, 1, 4], [1, 1, 7], [1, 1, 10],
+                [1, 3, 1], [1, 3, 4], [1, 3, 7], [1, 3, 10],
+                [2, 1, 1], [2, 1, 4], [2, 1, 7], [2, 1, 10],
+                [2, 3, 1], [2, 3, 4], [2, 3, 7], [2, 3, 10],
+                [3, 1, 1], [3, 1, 4], [3, 1, 7], [3, 1, 10],
+                [3, 3, 1], [3, 3, 4], [3, 3, 7], [3, 3, 10]
+            ]
+            ]]></code>
+            24 cases.
+            </returns>
+        </member>
+    </members>
+</doc>

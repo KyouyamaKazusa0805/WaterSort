@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<DocumentationFile>../docxml/WaterSort.Analytics.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\System\SystemExtensions.csproj" />
+		<ProjectReference Include="..\WaterSort.Core\WaterSort.Core.csproj" />
+	</ItemGroup>
+
+</Project>
